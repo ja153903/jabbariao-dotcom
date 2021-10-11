@@ -2,12 +2,10 @@
 
 use yew::{html, Component, ComponentLink, Html, ShouldRender};
 
-pub enum AboutMessage {}
-
-pub struct About {}
+pub struct About;
 
 impl Component for About {
-    type Message = AboutMessage;
+    type Message = ();
     type Properties = ();
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
