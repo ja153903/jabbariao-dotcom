@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 use yew::prelude::*;
 use yew::Html;
 use yew_router::route::Route;
@@ -11,18 +9,14 @@ use pages::{about::About, page_not_found::PageNotFound};
 mod routes;
 use routes::{AppRoute, AppRouter, PublicUrlSwitch};
 
-enum Msg {}
-
-struct Model {
-    link: ComponentLink<Self>,
-}
+struct Model;
 
 impl Component for Model {
-    type Message = Msg;
+    type Message = ();
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link }
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        Self {}
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {

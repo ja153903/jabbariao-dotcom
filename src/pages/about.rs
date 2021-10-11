@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 use yew::{html, Component, ComponentLink, Html, ShouldRender};
 
 pub struct About;
