@@ -4,32 +4,30 @@ use yew::{html, Component, ComponentLink, Html, ShouldRender};
 
 pub enum AboutMessage {}
 
-pub struct About {
-    link: ComponentLink<Self>,
-}
+pub struct About {}
 
 impl Component for About {
     type Message = AboutMessage;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        About { link }
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        About {}
     }
 
     fn view(&self) -> Html {
         html!(
-            <div>
-                <h1>{"About"}</h1>
-                <p>{"I am Jaime Abbariao. A software engineer at BentoBox"}</p>
+            <div class="container">
+                <h1>{ "About" }</h1>
+                <p>{ "I am Jaime Abbariao. A software engineer at BentoBox" }</p>
             </div>
         )
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        todo!()
+        unimplemented!()
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        todo!()
+        unimplemented!()
     }
 }

@@ -2,9 +2,14 @@
 
 use yew::prelude::*;
 use yew::Html;
+use yew_router::route::Route;
+use yew_router::switch::Permissive;
+
+mod pages;
+use pages::{about::About, page_not_found::PageNotFound};
 
 mod routes;
-mod pages;
+use routes::{AppRoute, AppRouter, PublicUrlSwitch};
 
 enum Msg {}
 
@@ -21,18 +26,46 @@ impl Component for Model {
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        todo!()
+        unimplemented!()
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        todo!()
+        unimplemented!()
     }
 
     fn view(&self) -> Html {
         html! {
-            <div>
-                <p>{"Stuff is going to happen here"}</p>
-            </div>
+            <>
+                <main>
+                   <AppRouter
+                        render=AppRouter::render(Self::switch)
+                        redirect=AppRouter::redirect(|route: Route| {
+                            AppRoute::PageNotFound(Permissive(Some(route.route))).into_public()
+                        })
+                   />
+                </main>
+            </>
+        }
+    }
+}
+
+impl Model {
+    fn switch(switch: PublicUrlSwitch) -> Html {
+        match switch.route() {
+            // TODO: Create basic component for Home
+            AppRoute::Home => {
+                html! { <About /> }
+            }
+            AppRoute::About => {
+                html! { <About /> }
+            }
+            // TODO: Create basic component for Resume
+            AppRoute::Resume => {
+                html! { <About /> }
+            }
+            AppRoute::PageNotFound(Permissive(route)) => {
+                html! { <PageNotFound route=route /> }
+            }
         }
     }
 }
