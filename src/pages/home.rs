@@ -14,7 +14,7 @@ impl Component for Home {
         html!(
             <div class="container">
                 <h1>{ "Home" }</h1>
-                <p>{ "Currently working on implementing this website with Yew" }</p>
+                <p>{ "Currently focused on Rust, Cryptography, and WASM" }</p>
             </div>
         )
     }
