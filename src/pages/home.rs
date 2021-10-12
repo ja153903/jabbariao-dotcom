@@ -1,4 +1,4 @@
-use yew::{html, Component, ComponentLink, Html, ShouldRender};
+use yew::{html, classes, Component, ComponentLink, Html, ShouldRender};
 
 pub struct Home;
 
@@ -12,9 +12,12 @@ impl Component for Home {
 
     fn view(&self) -> Html {
         html!(
-            <div class="container">
-                <h1>{ "Home" }</h1>
-                <p>{ "Currently focused on Rust, Cryptography, and WASM" }</p>
+            <div class=classes!("container", "mx-auto", "text-center", "py-4", "font-mono")>
+                <h1 class=classes!("text-4xl")>{ "Home" }</h1>
+                <div class=classes!("py-8")>
+                    <h2 class=classes!("text-2xl")>{ "What am I currently working on?" }</h2>
+                    <p>{ "Currently focused on Rust, Cryptography, and WASM" }</p>
+                </div>
             </div>
         )
     }
