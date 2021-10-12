@@ -8,9 +8,9 @@ use pages::{about::About, home::Home, page_not_found::PageNotFound, resume::Resu
 mod routes;
 use routes::{AppRoute, AppRouter};
 
-struct Model;
+struct App;
 
-impl Component for Model {
+impl Component for App {
     type Message = ();
     type Properties = ();
 
@@ -39,7 +39,7 @@ impl Component for Model {
     }
 }
 
-impl Model {
+impl App {
     fn switch(switch: AppRoute) -> Html {
         match switch {
             AppRoute::About => html! { <About /> },
@@ -51,5 +51,5 @@ impl Model {
 }
 
 fn main() {
-    yew::start_app::<Model>();
+    yew::start_app::<App>();
 }
