@@ -1,13 +1,12 @@
 use yew::prelude::*;
 use yew::Html;
-use yew_router::route::Route;
 use yew_router::switch::Permissive;
 
 mod pages;
-use pages::{about::About, page_not_found::PageNotFound};
+use pages::{about::About, home::Home, page_not_found::PageNotFound, resume::Resume};
 
 mod routes;
-use routes::{AppRoute, AppRouter, PublicUrlSwitch};
+use routes::{AppRoute, AppRouter};
 
 struct Model;
 
@@ -33,9 +32,6 @@ impl Component for Model {
                 <main>
                    <AppRouter
                         render=AppRouter::render(Self::switch)
-                        redirect=AppRouter::redirect(|route: Route| {
-                            AppRoute::PageNotFound(Permissive(Some(route.route))).into_public()
-                        })
                    />
                 </main>
             </>
@@ -44,22 +40,12 @@ impl Component for Model {
 }
 
 impl Model {
-    fn switch(switch: PublicUrlSwitch) -> Html {
-        match switch.route() {
-            // TODO: Create basic component for Home
-            AppRoute::Home => {
-                html! { <About /> }
-            }
-            AppRoute::About => {
-                html! { <About /> }
-            }
-            // TODO: Create basic component for Resume
-            AppRoute::Resume => {
-                html! { <About /> }
-            }
-            AppRoute::PageNotFound(Permissive(route)) => {
-                html! { <PageNotFound route=route /> }
-            }
+    fn switch(switch: AppRoute) -> Html {
+        match switch {
+            AppRoute::About => html! { <About /> },
+            AppRoute::Resume => html! { <Resume /> },
+            AppRoute::Home => html! { <Home /> },
+            AppRoute::PageNotFound(Permissive(route)) => html! { <PageNotFound route=route /> },
         }
     }
 }
