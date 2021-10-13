@@ -12,12 +12,9 @@ impl Component for Home {
 
     fn view(&self) -> Html {
         html!(
-            <div class=classes!("container", "mx-auto", "text-center", "py-4", "font-mono")>
-                <h1 class=classes!("text-4xl")>{ "Home" }</h1>
-                <div class=classes!("py-8")>
-                    <h2 class=classes!("text-2xl")>{ "What am I currently working on?" }</h2>
-                    <p>{ "Currently focused on Rust, Cryptography, and WASM" }</p>
-                </div>
+            <div class=classes!("container", "mx-auto", "text-left", "font-mono")>
+                <h2 class=classes!("text-2xl", "py-8")>{ "What am I currently working on?" }</h2>
+                <p>{ "Diving into Rust, WASM, and Cryptography" }</p>
             </div>
         )
     }

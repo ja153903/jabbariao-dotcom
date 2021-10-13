@@ -5,6 +5,9 @@ use yew_router::switch::Permissive;
 mod pages;
 use pages::{about::About, home::Home, page_not_found::PageNotFound, resume::Resume};
 
+mod components;
+use components::navbar::NavBar;
+
 mod routes;
 use routes::{AppRoute, AppRouter};
 
@@ -30,6 +33,7 @@ impl Component for App {
         html! {
             <>
                 <main>
+                   <NavBar />
                    <AppRouter
                         render=AppRouter::render(Self::switch)
                    />
